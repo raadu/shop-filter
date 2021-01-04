@@ -71,6 +71,9 @@ let prices = [];
 let colors = [];
 let finalFilter = [];
 
+let divId = document.getElementById("json");
+
+
 function filterProducts() {
 
     let categoryFilter = categorySelect();
@@ -96,11 +99,11 @@ function filterProducts() {
         return colorFilter.indexOf(n) !== -1
     })]
 
+    //Set finalFilter array
     finalFilter = [...new Set(combinedFilter.map(item => item))];
 
-    //console.log(categoryFilter)
-
-    console.log("final filter: ", finalFilter);
+    // Set DOM to show filtered JSON data
+    divId.innerHTML = JSON.stringify(finalFilter);
 
 }
 
@@ -119,10 +122,6 @@ function categorySelect() {
     else {
         return [];
     }
-
-
-    //   console.log(selectedCategory);
-    //   console.log("filtered category: ",filteredCategory);
 }
 
 
@@ -142,9 +141,6 @@ function selectedBrands() {
     });
 
     return filteredBrands;
-
-    //   console.log(brands);
-    //   console.log("filteredBrands: ", filteredBrands);
 }
 
 function selectedPrice() {
@@ -181,9 +177,6 @@ function selectedPrice() {
     });
 
     return filteredPrices;
-
-    //   console.log(prices);
-    //   console.log("filteredPrices: ", filteredPrices);
 }
 
 function selectedColor() {
@@ -203,7 +196,4 @@ function selectedColor() {
     });
 
     return filteredColors;
-
-    //   console.log(colors);
-    //   console.log("filteredColors: ", filteredColors);
 }
