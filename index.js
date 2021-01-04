@@ -73,7 +73,6 @@ let finalFilter = [];
 
 function filterProducts() {
 
-
     let categoryFilter = categorySelect();
     let brandFilter = selectedBrands();
     let priceFilter = selectedPrice();
@@ -81,16 +80,32 @@ function filterProducts() {
 
     let combinedFilter = [...categoryFilter, ...brandFilter, ...priceFilter, ...colorFilter];
 
-    finalFilter = [...new Set(combinedFilter.map(item => item))];
+    categoryFilter.length === 0 ? true : combinedFilter = [...combinedFilter.filter(n => {
+        return categoryFilter.indexOf(n) !== -1
+    })]
 
-    console.log("final filter: ", finalFilter);
-    
+    brandFilter.length === 0 ? true : combinedFilter = [...combinedFilter.filter(n => {
+        return brandFilter.indexOf(n) !== -1
+    })]
+
+    priceFilter.length === 0 ? true : combinedFilter = [...combinedFilter.filter(n => {
+        return priceFilter.indexOf(n) !== -1
+    })]
+
+    colorFilter.length === 0 ? true : combinedFilter = [...combinedFilter.filter(n => {
+        return colorFilter.indexOf(n) !== -1
+    })]
+
+    //console.log(categoryFilter)
+
+    console.log("final filter: ", combinedFilter);
+
 }
 
 //These functions are called inside onclick event in html page buttons
 
 function categorySelect() {
-    if(document.querySelector('input[name="gender"]:checked')!==null) {
+    if (document.querySelector('input[name="gender"]:checked') !== null) {
         selectedCategory = document.querySelector('input[name="gender"]:checked').value;
         console.log("selectedCategory", selectedCategory);
         let filteredCategory = dummyData.filter((data) => {
@@ -102,32 +117,32 @@ function categorySelect() {
     else {
         return [];
     }
-  
 
-//   console.log(selectedCategory);
-//   console.log("filtered category: ",filteredCategory);
+
+    //   console.log(selectedCategory);
+    //   console.log("filtered category: ",filteredCategory);
 }
 
 
 function selectedBrands() {
 
-  let checkedBoxValues = [];
-  let selectedBrands = document.querySelectorAll('input[name="brand"]:checked');
-  selectedBrands.forEach((brand) => {
-    checkedBoxValues.push(brand.value);
-  });
-  brands = [...checkedBoxValues];
-
-  let filteredBrands = dummyData.filter((data) => {
-    return brands.some((brand) => {
-       return data.brand === brand;
+    let checkedBoxValues = [];
+    let selectedBrands = document.querySelectorAll('input[name="brand"]:checked');
+    selectedBrands.forEach((brand) => {
+        checkedBoxValues.push(brand.value);
     });
-  });
+    brands = [...checkedBoxValues];
 
-  return filteredBrands;
-  
-//   console.log(brands);
-//   console.log("filteredBrands: ", filteredBrands);
+    let filteredBrands = dummyData.filter((data) => {
+        return brands.some((brand) => {
+            return data.brand === brand;
+        });
+    });
+
+    return filteredBrands;
+
+    //   console.log(brands);
+    //   console.log("filteredBrands: ", filteredBrands);
 }
 
 function selectedPrice() {
@@ -140,33 +155,33 @@ function selectedPrice() {
     prices = [...checkedBoxValues];
 
 
-  let filteredPrices = dummyData.filter((data) => {
-    return prices.some((price) => {
-        switch(price) {
-            case "-50": 
-                return data.price < 50;
-            case "50-100": 
-                return data.price >= 50 && data.price <= 100;
-            case "100-150":
-                return data.price >= 100 && data.price <= 150;
-            case "150-200": 
-                return data.price >= 150 && data.price <= 200;
-            case "200-300": 
-                return data.price >= 200 && data.price <= 300;
-            case "300-500": 
-                return data.price >= 300 && data.price <= 500;
-            case "500-1000": 
-                return data.price >= 500 && data.price <= 1000;   
-            case "+1000": 
-                return data.price > 1000; 
-        }
+    let filteredPrices = dummyData.filter((data) => {
+        return prices.some((price) => {
+            switch (price) {
+                case "-50":
+                    return data.price < 50;
+                case "50-100":
+                    return data.price >= 50 && data.price <= 100;
+                case "100-150":
+                    return data.price >= 100 && data.price <= 150;
+                case "150-200":
+                    return data.price >= 150 && data.price <= 200;
+                case "200-300":
+                    return data.price >= 200 && data.price <= 300;
+                case "300-500":
+                    return data.price >= 300 && data.price <= 500;
+                case "500-1000":
+                    return data.price >= 500 && data.price <= 1000;
+                case "+1000":
+                    return data.price > 1000;
+            }
+        });
     });
-  });
 
-  return filteredPrices;
+    return filteredPrices;
 
-//   console.log(prices);
-//   console.log("filteredPrices: ", filteredPrices);
+    //   console.log(prices);
+    //   console.log("filteredPrices: ", filteredPrices);
 }
 
 function selectedColor() {
@@ -179,14 +194,14 @@ function selectedColor() {
     colors = [...checkedBoxValues];
 
 
-  let filteredColors = dummyData.filter((data) => {
-    return colors.some((color) => {
-       return data.color === color;
+    let filteredColors = dummyData.filter((data) => {
+        return colors.some((color) => {
+            return data.color === color;
+        });
     });
-  });
 
-  return filteredColors;
+    return filteredColors;
 
-//   console.log(colors);
-//   console.log("filteredColors: ", filteredColors);
+    //   console.log(colors);
+    //   console.log("filteredColors: ", filteredColors);
 }
