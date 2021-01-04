@@ -96,9 +96,11 @@ function filterProducts() {
         return colorFilter.indexOf(n) !== -1
     })]
 
+    finalFilter = [...new Set(combinedFilter.map(item => item))];
+
     //console.log(categoryFilter)
 
-    console.log("final filter: ", combinedFilter);
+    console.log("final filter: ", finalFilter);
 
 }
 
