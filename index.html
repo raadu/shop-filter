@@ -10,7 +10,7 @@
       id="men"
       name="gender"
       value="men"
-      onclick="categorySelect(this);"
+      onclick="filterProducts();"
     />
     <label for="men">Men</label><br />
     <input
@@ -18,7 +18,7 @@
       id="women"
       name="gender"
       value="women"
-      onclick="categorySelect(this);"
+      onclick="filterProducts();"
     />
     <label for="women">Women</label><br />
     <input
@@ -26,7 +26,7 @@
       id="kids"
       name="gender"
       value="kids"
-      onclick="categorySelect(this);"
+      onclick="filterProducts();"
     />
     <label for="kids">Kids</label>
 
@@ -34,55 +34,61 @@
 
     <input
       type="checkbox"
+      class="brandCheckBox"
       id="brand"
       name="brand"
       value="roadster"
-      onclick="selectedBrands(this);"
+      onclick="filterProducts();"
     />
     <label for="brand">Roadster</label><br />
     <input
       type="checkbox"
+      class="brandCheckBox"
       id="brand"
       name="brand"
       value="puma"
       value="roadster"
-      onclick="selectedBrands(this);"
+      onclick="filterProducts();"
     />
     <label for="brand">Puma</label><br />
     <input
       type="checkbox"
+      class="brandCheckBox"
       id="brand"
       name="brand"
       value="tommy hilfiger"
       value="roadster"
-      onclick="selectedBrands(this);"
+      onclick="filterProducts();"
     />
     <label for="brand">Tommy Hilfiger</label><br />
     <input
       type="checkbox"
+      class="brandCheckBox"
       id="brand"
       name="brand"
       value="jack and jones"
       value="roadster"
-      onclick="selectedBrands(this);"
+      onclick="filterProducts();"
     />
     <label for="brand">Jack and Jones</label><br />
     <input
       type="checkbox"
+      class="brandCheckBox"
       id="brand"
       name="brand"
       value="armani"
       value="roadster"
-      onclick="selectedBrands(this);"
+      onclick="filterProducts();"
     />
     <label for="brand"></label>Armani<br />
     <input
       type="checkbox"
+      class="brandCheckBox"
       id="brand"
       name="brand"
       value="zara"
       value="roadster"
-      onclick="selectedBrands(this);"
+      onclick="filterProducts();"
     />
     <label for="brand">Zara</label><br />
 
@@ -93,7 +99,7 @@
       id="price"
       name="price"
       value="-50"
-      onclick="selectedPrice(this);"
+      onclick="filterProducts()"
     />
     <label for="price">Under 50</label><br />
 
@@ -102,7 +108,7 @@
       id="price"
       name="price"
       value="50-100"
-      onclick="selectedPrice(this);"
+      onclick="filterProducts()"
     />
     <label for="price">$50-$100</label><br />
 
@@ -111,7 +117,7 @@
       id="price"
       name="price"
       value="100-150"
-      onclick="selectedPrice(this);"
+      onclick="filterProducts()"
     />
     <label for="price">$100-$150</label><br />
 
@@ -120,7 +126,7 @@
       id="price"
       name="price"
       value="150-200"
-      onclick="selectedPrice(this);"
+      onclick="filterProducts()"
     />
     <label for="price">$150-$200</label><br />
 
@@ -129,7 +135,7 @@
       id="price"
       name="price"
       value="200-300"
-      onclick="selectedPrice(this);"
+      onclick="filterProducts()"
     />
     <label for="price">$200-$300</label><br />
 
@@ -138,7 +144,7 @@
       id="price"
       name="price"
       value="300-500"
-      onclick="selectedPrice(this);"
+      onclick="filterProducts()"
     />
     <label for="price">$300-$500</label><br />
 
@@ -147,7 +153,7 @@
       id="price"
       name="price"
       value="500-1000"
-      onclick="selectedPrice(this);"
+      onclick="filterProducts()"
     />
     <label for="price">$500-$1000</label><br />
 
@@ -156,7 +162,7 @@
       id="price"
       name="price"
       value="+1000"
-      onclick="selectedPrice(this);"
+      onclick="filterProducts()"
     />
     <label for="price">Over $1000</label><br />
 
@@ -167,7 +173,7 @@
       id="color"
       name="color"
       value="black"
-      onclick="selectedColor(this);"
+      onclick="filterProducts()"
     />
     <label for="color">Black</label><br />
 
@@ -176,7 +182,7 @@
       id="color"
       name="color"
       value="blue"
-      onclick="selectedColor(this);"
+      onclick="filterProducts()"
     />
     <label for="color">Blue</label><br />
 
@@ -185,7 +191,7 @@
       id="color"
       name="color"
       value="olive"
-      onclick="selectedColor(this);"
+      onclick="filterProducts()"
     />
     <label for="color">Olive</label><br />
 
@@ -194,7 +200,7 @@
       id="color"
       name="color"
       value="maroon"
-      onclick="selectedColor(this);"
+      onclick="filterProducts()"
     />
     <label for="color">Maroon</label><br />
 
@@ -203,7 +209,7 @@
       id="color"
       name="color"
       value="brown"
-      onclick="selectedColor(this);"
+      onclick="filterProducts()"
     />
     <label for="color">Brown</label><br />
 
@@ -212,7 +218,7 @@
       id="color"
       name="color"
       value="white"
-      onclick="selectedColor(this);"
+      onclick="filterProducts()"
     />
     <label for="color">White</label><br />
 
@@ -221,7 +227,7 @@
       id="color"
       name="color"
       value="grey"
-      onclick="selectedColor(this);"
+      onclick="filterProducts()"
     />
     <label for="color">Grey</label><br />
 

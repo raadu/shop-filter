@@ -1,5 +1,6 @@
 let dummyData = [
     {
+        "id": 1,
         "name": "test1",
         "category": "men",
         "brand": "puma",
@@ -7,6 +8,7 @@ let dummyData = [
         "color": "black"
     },
     {
+        "id": 2,
         "name": "test2",
         "category": "women",
         "brand": "roadster",
@@ -14,6 +16,7 @@ let dummyData = [
         "color": "blue"
     },
     {
+        "id": 3,
         "name": "test3",
         "category": "kids",
         "brand": "armani",
@@ -21,6 +24,7 @@ let dummyData = [
         "color": "brown"
     },
     {
+        "id": 4,
         "name": "test4",
         "category": "men",
         "brand": "zara",
@@ -28,6 +32,7 @@ let dummyData = [
         "color": "maroon"
     },
     {
+        "id": 5,
         "name": "test5",
         "category": "women",
         "brand": "zara",
@@ -35,6 +40,7 @@ let dummyData = [
         "color": "white"
     },
     {
+        "id": 6,
         "name": "test6",
         "category": "kids",
         "brand": "jack and jones",
@@ -42,6 +48,7 @@ let dummyData = [
         "color": "grey"
     },
     {
+        "id": 7,
         "name": "test7",
         "category": "men",
         "brand": "puma",
@@ -49,6 +56,7 @@ let dummyData = [
         "color": "olive"
     },
     {
+        "id": 8,
         "name": "test8",
         "category": "women",
         "brand": "roadster",
@@ -61,34 +69,76 @@ let selectedCategory;
 let brands = [];
 let prices = [];
 let colors = [];
+let finalFilter = [];
+
+function filterProducts() {
+
+
+    let categoryFilter = categorySelect();
+    let brandFilter = selectedBrands();
+    let priceFilter = selectedPrice();
+    let colorFilter = selectedColor();
+
+    let combinedFilter = [...categoryFilter, ...brandFilter, ...priceFilter, ...colorFilter];
+
+    finalFilter = [...new Set(combinedFilter.map(item => item))];
+
+    console.log("final filter: ", finalFilter);
+    
+}
 
 //These functions are called inside onclick event in html page buttons
 
-function categorySelect(data) {
-  selectedCategory = data.value;
-  let filteredCategory = dummyData.filter((data) => {
-    return data.category === selectedCategory;
-  })
-  console.log(selectedCategory);
-  console.log("filtered category: ",filteredCategory);
+function categorySelect() {
+    if(document.querySelector('input[name="gender"]:checked')!==null) {
+        selectedCategory = document.querySelector('input[name="gender"]:checked').value;
+        console.log("selectedCategory", selectedCategory);
+        let filteredCategory = dummyData.filter((data) => {
+            return data.category === selectedCategory;
+        });
+
+        return filteredCategory;
+    }
+    else {
+        return [];
+    }
   
+
+//   console.log(selectedCategory);
+//   console.log("filtered category: ",filteredCategory);
 }
 
-function selectedBrands(data) {
-  brands.push(data.value);
+
+function selectedBrands() {
+
+  let checkedBoxValues = [];
+  let selectedBrands = document.querySelectorAll('input[name="brand"]:checked');
+  selectedBrands.forEach((brand) => {
+    checkedBoxValues.push(brand.value);
+  });
+  brands = [...checkedBoxValues];
 
   let filteredBrands = dummyData.filter((data) => {
     return brands.some((brand) => {
        return data.brand === brand;
-    })
-  })
+    });
+  });
+
+  return filteredBrands;
   
-  console.log(brands);
-  console.log("filteredBrands: ", filteredBrands);
+//   console.log(brands);
+//   console.log("filteredBrands: ", filteredBrands);
 }
 
-function selectedPrice(data) {
-  prices.push(data.value);
+function selectedPrice() {
+
+    let checkedBoxValues = [];
+    let selectedPrices = document.querySelectorAll('input[name="price"]:checked');
+    selectedPrices.forEach((price) => {
+        checkedBoxValues.push(price.value);
+    });
+    prices = [...checkedBoxValues];
+
 
   let filteredPrices = dummyData.filter((data) => {
     return prices.some((price) => {
@@ -110,22 +160,33 @@ function selectedPrice(data) {
             case "+1000": 
                 return data.price > 1000; 
         }
-    })
-  })
+    });
+  });
 
-  console.log(prices);
-  console.log("filteredPrices: ", filteredPrices);
+  return filteredPrices;
+
+//   console.log(prices);
+//   console.log("filteredPrices: ", filteredPrices);
 }
 
-function selectedColor(data) {
-  colors.push(data.value);
+function selectedColor() {
+
+    let checkedBoxValues = [];
+    let selectedColors = document.querySelectorAll('input[name="color"]:checked');
+    selectedColors.forEach((color) => {
+        checkedBoxValues.push(color.value);
+    });
+    colors = [...checkedBoxValues];
+
 
   let filteredColors = dummyData.filter((data) => {
     return colors.some((color) => {
        return data.color === color;
-    })
-  })
+    });
+  });
 
-  console.log(colors);
-  console.log("filteredColors: ", filteredColors);
+  return filteredColors;
+
+//   console.log(colors);
+//   console.log("filteredColors: ", filteredColors);
 }
