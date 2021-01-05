@@ -219,16 +219,6 @@ function selectedColor() {
 // Implementing sortBy
 const sortBy = document.getElementById("sortBy");
 
-const compare = (a, b) => {
-    if (a.last_nom < b.last_nom) {
-        return -1;
-    }
-    if (a.last_nom > b.last_nom) {
-        return 1;
-    }
-    return 0;
-}
-
 const sortElement = () => {
     let sortArray = [];
 
@@ -298,7 +288,9 @@ const sortElement = () => {
 
     }
 
-    console.log("sort Array", sortArray)
+    finalFilter = [...sortArray]
+
+    console.log("sort Array", finalFilter)
 }
 
 sortBy.addEventListener('change', sortElement);
