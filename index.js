@@ -7,7 +7,8 @@ let dummyData = [
         "price": 30,
         "color": "black",
         "discount": 20,
-        "popularity": 1
+        "popularity": 1,
+        "image": "https://picsum.photos/200"
     },
     {
         "id": 2,
@@ -17,7 +18,8 @@ let dummyData = [
         "price": 150,
         "color": "blue",
         "discount": 30,
-        "popularity": 2
+        "popularity": 2,
+        "image": "https://picsum.photos/200"
     },
     {
         "id": 3,
@@ -27,7 +29,8 @@ let dummyData = [
         "price": 300,
         "color": "brown",
         "discount": 40,
-        "popularity": 3
+        "popularity": 3,
+        "image": "https://picsum.photos/200"
     },
     {
         "id": 4,
@@ -37,7 +40,8 @@ let dummyData = [
         "price": 350,
         "color": "maroon",
         "discount": 65,
-        "popularity": 1
+        "popularity": 1,
+        "image": "https://picsum.photos/200"
     },
     {
         "id": 5,
@@ -47,7 +51,8 @@ let dummyData = [
         "price": 510,
         "color": "white",
         "discount": 70,
-        "popularity": 2
+        "popularity": 2,
+        "image": "https://picsum.photos/200"
     },
     {
         "id": 6,
@@ -57,7 +62,8 @@ let dummyData = [
         "price": 4000,
         "color": "grey",
         "discount": 10,
-        "popularity": 3
+        "popularity": 3,
+        "image": "https://picsum.photos/200"
     },
     {
         "id": 7,
@@ -67,7 +73,8 @@ let dummyData = [
         "price": 670,
         "color": "olive",
         "discount": 15,
-        "popularity": 3
+        "popularity": 3,
+        "image": "https://picsum.photos/200"
     },
     {
         "id": 8,
@@ -77,7 +84,8 @@ let dummyData = [
         "price": 1000,
         "color": "black",
         "discount": 40,
-        "popularity": 2
+        "popularity": 2,
+        "image": "https://picsum.photos/200"
     }
 ];
 
@@ -88,8 +96,6 @@ let colors = [];
 let finalFilter = [];
 
 let divId = document.getElementById("json");
-
-document.getElementsByTagName("input")
 
 
 function filterProducts() {
@@ -288,9 +294,13 @@ const sortElement = () => {
 
     }
 
-    finalFilter = [...sortArray]
 
-    console.log("sort Array", finalFilter)
+    console.log("sort Array", sortArray);
+    finalFilter = [...sortArray];
+
+    // Set DOM to show filtered JSON data
+    divId.innerHTML = JSON.stringify(finalFilter);
+
 }
 
 sortBy.addEventListener('change', sortElement);

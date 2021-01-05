@@ -1,99 +1,247 @@
 <!DOCTYPE html>
 <html>
+  <body>
+    <div id="json"></div>
 
-<body>
-  <div id="json"></div>
+    <label for="sortBy">Sort by:</label>
+    <select name="sortBy" id="sortBy" placeholder="sort by">
+      <option value="" selected disabled>Options</option>
+      <option value="popularity">Popularity (High to Low)</option>
+      <option value="discount">Discount (High to Low)</option>
+      <option value="priceHigh">Price (High to Low)</option>
+      <option value="priceLow">Price (Low to High)</option>
+    </select>
 
-  <label for="sortBy">Sort by:</label>
-  <select name="sortBy" id="sortBy" placeholder="sort by">
-    <option value="" selected disabled>Options</option>
-    <option value="popularity">Popularity (High to Low)</option>
-    <option value="discount">Discount (High to Low)</option>
-    <option value="priceHigh">Price (High to Low)</option>
-    <option value="priceLow">Price (Low to High)</option>
-  </select>
+    <h1>Filter</h1>
 
-  <h1>Filter</h1>
+    <h3>Category</h3>
 
-  <h3>Category</h3>
+    <input
+      type="radio"
+      id="men"
+      name="gender"
+      value="men"
+      onclick="filterProducts();"
+    />
+    <label for="men">Men</label><br />
+    <input
+      type="radio"
+      id="women"
+      name="gender"
+      value="women"
+      onclick="filterProducts();"
+    />
+    <label for="women">Women</label><br />
+    <input
+      type="radio"
+      id="kids"
+      name="gender"
+      value="kids"
+      onclick="filterProducts();"
+    />
+    <label for="kids">Kids</label>
 
-  <input type="radio" id="men" name="gender" value="men" onclick="filterProducts();" />
-  <label for="men">Men</label><br />
-  <input type="radio" id="women" name="gender" value="women" onclick="filterProducts();" />
-  <label for="women">Women</label><br />
-  <input type="radio" id="kids" name="gender" value="kids" onclick="filterProducts();" />
-  <label for="kids">Kids</label>
+    <h3>Brands</h3>
 
-  <h3>Brands</h3>
+    <input
+      type="checkbox"
+      class="brandCheckBox"
+      id="brand"
+      name="brand"
+      value="roadster"
+      onclick="filterProducts();"
+    />
+    <label for="brand">Roadster</label><br />
+    <input
+      type="checkbox"
+      class="brandCheckBox"
+      id="brand"
+      name="brand"
+      value="puma"
+      value="roadster"
+      onclick="filterProducts();"
+    />
+    <label for="brand">Puma</label><br />
+    <input
+      type="checkbox"
+      class="brandCheckBox"
+      id="brand"
+      name="brand"
+      value="tommy hilfiger"
+      value="roadster"
+      onclick="filterProducts();"
+    />
+    <label for="brand">Tommy Hilfiger</label><br />
+    <input
+      type="checkbox"
+      class="brandCheckBox"
+      id="brand"
+      name="brand"
+      value="jack and jones"
+      value="roadster"
+      onclick="filterProducts();"
+    />
+    <label for="brand">Jack and Jones</label><br />
+    <input
+      type="checkbox"
+      class="brandCheckBox"
+      id="brand"
+      name="brand"
+      value="armani"
+      value="roadster"
+      onclick="filterProducts();"
+    />
+    <label for="brand"></label>Armani<br />
+    <input
+      type="checkbox"
+      class="brandCheckBox"
+      id="brand"
+      name="brand"
+      value="zara"
+      value="roadster"
+      onclick="filterProducts();"
+    />
+    <label for="brand">Zara</label><br />
 
-  <input type="checkbox" class="brandCheckBox" id="brand" name="brand" value="roadster" onclick="filterProducts();" />
-  <label for="brand">Roadster</label><br />
-  <input type="checkbox" class="brandCheckBox" id="brand" name="brand" value="puma" value="roadster"
-    onclick="filterProducts();" />
-  <label for="brand">Puma</label><br />
-  <input type="checkbox" class="brandCheckBox" id="brand" name="brand" value="tommy hilfiger" value="roadster"
-    onclick="filterProducts();" />
-  <label for="brand">Tommy Hilfiger</label><br />
-  <input type="checkbox" class="brandCheckBox" id="brand" name="brand" value="jack and jones" value="roadster"
-    onclick="filterProducts();" />
-  <label for="brand">Jack and Jones</label><br />
-  <input type="checkbox" class="brandCheckBox" id="brand" name="brand" value="armani" value="roadster"
-    onclick="filterProducts();" />
-  <label for="brand"></label>Armani<br />
-  <input type="checkbox" class="brandCheckBox" id="brand" name="brand" value="zara" value="roadster"
-    onclick="filterProducts();" />
-  <label for="brand">Zara</label><br />
+    <h3>Price</h3>
 
-  <h3>Price</h3>
+    <input
+      type="checkbox"
+      id="price"
+      name="price"
+      value="-50"
+      onclick="filterProducts()"
+    />
+    <label for="price">Under 50</label><br />
 
-  <input type="checkbox" id="price" name="price" value="-50" onclick="filterProducts()" />
-  <label for="price">Under 50</label><br />
+    <input
+      type="checkbox"
+      id="price"
+      name="price"
+      value="50-100"
+      onclick="filterProducts()"
+    />
+    <label for="price">$50-$100</label><br />
 
-  <input type="checkbox" id="price" name="price" value="50-100" onclick="filterProducts()" />
-  <label for="price">$50-$100</label><br />
+    <input
+      type="checkbox"
+      id="price"
+      name="price"
+      value="100-150"
+      onclick="filterProducts()"
+    />
+    <label for="price">$100-$150</label><br />
 
-  <input type="checkbox" id="price" name="price" value="100-150" onclick="filterProducts()" />
-  <label for="price">$100-$150</label><br />
+    <input
+      type="checkbox"
+      id="price"
+      name="price"
+      value="150-200"
+      onclick="filterProducts()"
+    />
+    <label for="price">$150-$200</label><br />
 
-  <input type="checkbox" id="price" name="price" value="150-200" onclick="filterProducts()" />
-  <label for="price">$150-$200</label><br />
+    <input
+      type="checkbox"
+      id="price"
+      name="price"
+      value="200-300"
+      onclick="filterProducts()"
+    />
+    <label for="price">$200-$300</label><br />
 
-  <input type="checkbox" id="price" name="price" value="200-300" onclick="filterProducts()" />
-  <label for="price">$200-$300</label><br />
+    <input
+      type="checkbox"
+      id="price"
+      name="price"
+      value="300-500"
+      onclick="filterProducts()"
+    />
+    <label for="price">$300-$500</label><br />
 
-  <input type="checkbox" id="price" name="price" value="300-500" onclick="filterProducts()" />
-  <label for="price">$300-$500</label><br />
+    <input
+      type="checkbox"
+      id="price"
+      name="price"
+      value="500-1000"
+      onclick="filterProducts()"
+    />
+    <label for="price">$500-$1000</label><br />
 
-  <input type="checkbox" id="price" name="price" value="500-1000" onclick="filterProducts()" />
-  <label for="price">$500-$1000</label><br />
+    <input
+      type="checkbox"
+      id="price"
+      name="price"
+      value="+1000"
+      onclick="filterProducts()"
+    />
+    <label for="price">Over $1000</label><br />
 
-  <input type="checkbox" id="price" name="price" value="+1000" onclick="filterProducts()" />
-  <label for="price">Over $1000</label><br />
+    <h3>Colors</h3>
 
-  <h3>Colors</h3>
+    <input
+      type="checkbox"
+      id="color"
+      name="color"
+      value="black"
+      onclick="filterProducts()"
+    />
+    <label for="color">Black</label><br />
 
-  <input type="checkbox" id="color" name="color" value="black" onclick="filterProducts()" />
-  <label for="color">Black</label><br />
+    <input
+      type="checkbox"
+      id="color"
+      name="color"
+      value="blue"
+      onclick="filterProducts()"
+    />
+    <label for="color">Blue</label><br />
 
-  <input type="checkbox" id="color" name="color" value="blue" onclick="filterProducts()" />
-  <label for="color">Blue</label><br />
+    <input
+      type="checkbox"
+      id="color"
+      name="color"
+      value="olive"
+      onclick="filterProducts()"
+    />
+    <label for="color">Olive</label><br />
 
-  <input type="checkbox" id="color" name="color" value="olive" onclick="filterProducts()" />
-  <label for="color">Olive</label><br />
+    <input
+      type="checkbox"
+      id="color"
+      name="color"
+      value="maroon"
+      onclick="filterProducts()"
+    />
+    <label for="color">Maroon</label><br />
 
-  <input type="checkbox" id="color" name="color" value="maroon" onclick="filterProducts()" />
-  <label for="color">Maroon</label><br />
+    <input
+      type="checkbox"
+      id="color"
+      name="color"
+      value="brown"
+      onclick="filterProducts()"
+    />
+    <label for="color">Brown</label><br />
 
-  <input type="checkbox" id="color" name="color" value="brown" onclick="filterProducts()" />
-  <label for="color">Brown</label><br />
+    <input
+      type="checkbox"
+      id="color"
+      name="color"
+      value="white"
+      onclick="filterProducts()"
+    />
+    <label for="color">White</label><br />
 
-  <input type="checkbox" id="color" name="color" value="white" onclick="filterProducts()" />
-  <label for="color">White</label><br />
+    <input
+      type="checkbox"
+      id="color"
+      name="color"
+      value="grey"
+      onclick="filterProducts()"
+    />
+    <label for="color">Grey</label><br />
 
-  <input type="checkbox" id="color" name="color" value="grey" onclick="filterProducts()" />
-  <label for="color">Grey</label><br />
-
-  <script src="index.js"></script>
-</body>
-
+    <script src="index.js"></script>
+  </body>
 </html>
