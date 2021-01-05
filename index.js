@@ -95,8 +95,14 @@ let prices = [];
 let colors = [];
 let finalFilter = [];
 
+// Get div element to show json data as string
 let divId = document.getElementById("json");
 
+// Execute filter function on every click in input tags
+let inputTags = document.getElementsByTagName("input");
+for(let i=0; i<inputTags.length; i++) {
+    inputTags[i].addEventListener("click", filterProducts);
+}
 
 function filterProducts() {
 
@@ -130,6 +136,8 @@ function filterProducts() {
     divId.innerHTML = JSON.stringify(finalFilter);
 
 }
+
+
 
 //These functions are called inside onclick event in html page buttons
 
