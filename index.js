@@ -5,7 +5,9 @@ let dummyData = [
         "category": "men",
         "brand": "puma",
         "price": 30,
-        "color": "black"
+        "color": "black",
+        "discount": 20,
+        "popularity": 1
     },
     {
         "id": 2,
@@ -13,7 +15,9 @@ let dummyData = [
         "category": "women",
         "brand": "roadster",
         "price": 150,
-        "color": "blue"
+        "color": "blue",
+        "discount": 30,
+        "popularity": 2
     },
     {
         "id": 3,
@@ -21,7 +25,9 @@ let dummyData = [
         "category": "kids",
         "brand": "armani",
         "price": 300,
-        "color": "brown"
+        "color": "brown",
+        "discount": 40,
+        "popularity": 3
     },
     {
         "id": 4,
@@ -29,7 +35,9 @@ let dummyData = [
         "category": "men",
         "brand": "zara",
         "price": 350,
-        "color": "maroon"
+        "color": "maroon",
+        "discount": 65,
+        "popularity": 1
     },
     {
         "id": 5,
@@ -37,7 +45,9 @@ let dummyData = [
         "category": "women",
         "brand": "zara",
         "price": 510,
-        "color": "white"
+        "color": "white",
+        "discount": 70,
+        "popularity": 2
     },
     {
         "id": 6,
@@ -45,7 +55,9 @@ let dummyData = [
         "category": "kids",
         "brand": "jack and jones",
         "price": 4000,
-        "color": "grey"
+        "color": "grey",
+        "discount": 10,
+        "popularity": 3
     },
     {
         "id": 7,
@@ -53,7 +65,9 @@ let dummyData = [
         "category": "men",
         "brand": "puma",
         "price": 670,
-        "color": "olive"
+        "color": "olive",
+        "discount": 15,
+        "popularity": 3
     },
     {
         "id": 8,
@@ -61,7 +75,9 @@ let dummyData = [
         "category": "women",
         "brand": "roadster",
         "price": 1000,
-        "color": "black"
+        "color": "black",
+        "discount": 40,
+        "popularity": 2
     }
 ];
 
@@ -72,6 +88,8 @@ let colors = [];
 let finalFilter = [];
 
 let divId = document.getElementById("json");
+
+document.getElementsByTagName("input")
 
 
 function filterProducts() {
