@@ -298,7 +298,11 @@ const sortElement = () => {
 
     }
 
-    console.log("sort Array", sortArray)
+    console.log("sort Array", sortArray);
+    finalFilter = [...sortArray];
+
+    // Set DOM to show filtered JSON data
+    divId.innerHTML = JSON.stringify(finalFilter);
 }
 
 sortBy.addEventListener('change', sortElement);
