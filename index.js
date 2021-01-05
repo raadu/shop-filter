@@ -215,3 +215,90 @@ function selectedColor() {
 
     return filteredColors;
 }
+
+// Implementing sortBy
+const sortBy = document.getElementById("sortBy");
+
+const compare = (a, b) => {
+    if (a.last_nom < b.last_nom) {
+        return -1;
+    }
+    if (a.last_nom > b.last_nom) {
+        return 1;
+    }
+    return 0;
+}
+
+const sortElement = () => {
+    let sortArray = [];
+
+    if (sortBy.value === "popularity") {
+        if (finalFilter.length === 0) {
+            sortArray = [...dummyData]
+            sortArray.sort(function (a, b) {
+                return a.popularity - b.popularity;
+            }
+            );
+        } else {
+            sortArray = [...finalFilter]
+            sortArray.sort(function (a, b) {
+                return a.popularity - b.popularity;
+            }
+            );
+        }
+        sortArray.reverse();
+
+    } else if (sortBy.value === "discount") {
+        if (finalFilter.length === 0) {
+            sortArray = [...dummyData]
+            sortArray.sort(function (a, b) {
+                return a.discount - b.discount;
+            }
+            );
+        } else {
+            sortArray = [...finalFilter]
+            sortArray.sort(function (a, b) {
+                return a.discount - b.discount;
+            }
+            );
+        }
+        sortArray.reverse();
+    } else if (sortBy.value === "priceHigh") {
+
+        if (finalFilter.length === 0) {
+            sortArray = [...dummyData]
+            sortArray.sort(function (a, b) {
+                return a.price - b.price;
+            }
+            );
+        } else {
+            sortArray = [...finalFilter]
+            sortArray.sort(function (a, b) {
+                return a.price - b.price;
+            }
+            );
+        }
+        sortArray.reverse();
+
+    } else if (sortBy.value === "priceLow") {
+
+        if (finalFilter.length === 0) {
+            sortArray = [...dummyData]
+            sortArray.sort(function (a, b) {
+                return a.price - b.price;
+            }
+            );
+        } else {
+            sortArray = [...finalFilter]
+            sortArray.sort(function (a, b) {
+                return a.price - b.price;
+            }
+            );
+        }
+
+    }
+
+    console.log("sort Array", sortArray)
+}
+
+sortBy.addEventListener('change', sortElement);
