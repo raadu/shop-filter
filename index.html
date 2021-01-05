@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.12.0/underscore-min.js"></script>
-  </head>
   <body>
     <div id="json"></div>
 
-    <label for="cars">Sort by:</label>
-    <select name="sortBy" id="sortBy">
+    <label for="sortBy">Sort by:</label>
+    <select name="sortBy" id="sortBy" placeholder="sort by">
+      <option value="" selected disabled>Options</option>
       <option value="popularity">Popularity (High to Low)</option>
       <option value="discount">Discount (High to Low)</option>
       <option value="priceHigh">Price (High to Low)</option>
       <option value="priceLow">Price (Low to High)</option>
     </select>
 
-    <div id="output"></div>
-    
     <h1>Filter</h1>
 
     <h3>Category</h3>

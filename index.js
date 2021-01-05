@@ -222,33 +222,93 @@ function selectedColor() {
     return filteredColors;
 }
 
-var templateString = `<div id="output"> 
-<p> 
-    My name is 
-    <%= name %> 
-</p>
-    
-<p> I can print numbers using templates </p> 
-  
-<% var numbers = [1, 2, 3, 4, 5]; %> 
-<ul> 
-    <% _(numbers).each(function(number) { %> 
-        <li> 
-            <%= number %> 
-        </li> 
-    <% }); %> 
-</ul>`;
+// Implementing sortBy
+const sortBy = document.getElementById("sortBy");
 
-window.onload = function() { 
-    var outputDiv = document.querySelector('#output'); 
+const compare = (a, b) => {
+    if (a.last_nom < b.last_nom) {
+        return -1;
+    }
+    if (a.last_nom > b.last_nom) {
+        return 1;
+    }
+    return 0;
+}
 
-    // Obtain the template rendering function 
-    // from template string 
-    var templateFunction = _.template(templateString); 
+const sortElement = () => {
+    let sortArray = [];
 
-    // Render the template with specified parameters 
-    outputDiv.innerHTML = templateFunction({ 
-        "name": "John",
-        "numbers"
-    }); 
-} 
+    if (sortBy.value === "popularity") {
+        if (finalFilter.length === 0) {
+            sortArray = [...dummyData]
+            sortArray.sort(function (a, b) {
+                return a.popularity - b.popularity;
+            }
+            );
+        } else {
+            sortArray = [...finalFilter]
+            sortArray.sort(function (a, b) {
+                return a.popularity - b.popularity;
+            }
+            );
+        }
+        sortArray.reverse();
+
+    } else if (sortBy.value === "discount") {
+        if (finalFilter.length === 0) {
+            sortArray = [...dummyData]
+            sortArray.sort(function (a, b) {
+                return a.discount - b.discount;
+            }
+            );
+        } else {
+            sortArray = [...finalFilter]
+            sortArray.sort(function (a, b) {
+                return a.discount - b.discount;
+            }
+            );
+        }
+        sortArray.reverse();
+    } else if (sortBy.value === "priceHigh") {
+
+        if (finalFilter.length === 0) {
+            sortArray = [...dummyData]
+            sortArray.sort(function (a, b) {
+                return a.price - b.price;
+            }
+            );
+        } else {
+            sortArray = [...finalFilter]
+            sortArray.sort(function (a, b) {
+                return a.price - b.price;
+            }
+            );
+        }
+        sortArray.reverse();
+
+    } else if (sortBy.value === "priceLow") {
+
+        if (finalFilter.length === 0) {
+            sortArray = [...dummyData]
+            sortArray.sort(function (a, b) {
+                return a.price - b.price;
+            }
+            );
+        } else {
+            sortArray = [...finalFilter]
+            sortArray.sort(function (a, b) {
+                return a.price - b.price;
+            }
+            );
+        }
+
+    }
+
+    console.log("sort Array", sortArray);
+    finalFilter = [...sortArray];
+
+    // Set DOM to show filtered JSON data
+    divId.innerHTML = JSON.stringify(finalFilter);
+}
+
+sortBy.addEventListener('change', sortElement);
