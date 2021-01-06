@@ -103,19 +103,17 @@ for(let i=0; i<inputTags.length; i++) {
     inputTags[i].addEventListener("click", filterProducts);
 }
 
-
-var templateString = `<div id="output"> 
-<ul> 
+var templateString = `<div class="container"> 
     <% _(filteredArray).each(function(data) { %> 
-        <li> 
-            Name: <%= data.name %>, 
-            category: <%= data.category %>, 
-            brand: <%= data.brand %>,
-            Price: <%= data.price %>, 
-            color: <%= data.color %>
-        </li> 
-    <% }); %> 
-</ul>`;
+        <div class="card">
+         <img src=<%= data.image %> alt="Product Image" style="width:100%">
+         <h1> <%= data.name %> </h1>
+         <p class="price">$<%= data.price %></p>
+         <p><%= data.discount %>% off</p>
+         <p><button>Add to Cart</button></p>
+        </div>
+    <% }); %>`;
+
 
 function showFilteredData(filteredArray) { 
     var outputDiv = document.querySelector('#json');
