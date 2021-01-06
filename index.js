@@ -97,6 +97,12 @@ let finalFilter = [];
 
 let divId = document.getElementById("json");
 
+// Execute filter function on every click in input tags
+let inputTags = document.getElementsByTagName("input");
+for(let i=0; i<inputTags.length; i++) {
+    inputTags[i].addEventListener("click", filterProducts);
+}
+
 
 var templateString = `<div id="output"> 
 <ul> 
