@@ -107,7 +107,7 @@ var templateString = `<div id="output">
     <% }); %> 
 </ul>`;
 
-function showFilteredData() { 
+function showFilteredData(filteredArray) { 
     var outputDiv = document.querySelector('#json');
 
     // Obtain the template rendering function 
@@ -117,9 +117,13 @@ function showFilteredData() {
     // Render the template with specified parameters 
     outputDiv.innerHTML = templateFunction({ 
         "name": "John",
-        "filteredArray": finalFilter
+        "filteredArray": filteredArray
     }); 
 } 
+
+$(document).ready(function () {
+    showFilteredData(dummyData);
+});
 
 
 function filterProducts() {
@@ -150,7 +154,7 @@ function filterProducts() {
     //Set finalFilter array
     finalFilter = [...new Set(combinedFilter.map(item => item))];
 
-    showFilteredData();
+    showFilteredData(finalFilter);
 }
 
 //These functions are called inside onclick event in html page buttons
@@ -320,7 +324,7 @@ const sortElement = () => {
     console.log("sort Array", sortArray);
     finalFilter = [...sortArray];
 
-    showFilteredData();
+    showFilteredData(finalFilter);
 }
 
 sortBy.addEventListener('change', sortElement);
