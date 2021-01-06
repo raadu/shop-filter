@@ -102,7 +102,11 @@ var templateString = `<div id="output">
 <ul> 
     <% _(filteredArray).each(function(data) { %> 
         <li> 
-            Name: <%= data.name %>, category: <%= data.category %>, Price: <%= data.price %>, color: <%= data.color %>
+            Name: <%= data.name %>, 
+            category: <%= data.category %>, 
+            brand: <%= data.brand %>,
+            Price: <%= data.price %>, 
+            color: <%= data.color %>
         </li> 
     <% }); %> 
 </ul>`;
