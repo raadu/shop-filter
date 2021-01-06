@@ -98,6 +98,30 @@ let finalFilter = [];
 let divId = document.getElementById("json");
 
 
+var templateString = `<div id="output"> 
+<ul> 
+    <% _(filteredArray).each(function(data) { %> 
+        <li> 
+            Name: <%= data.name %>, category: <%= data.category %>, Price: <%= data.price %>, color: <%= data.color %>
+        </li> 
+    <% }); %> 
+</ul>`;
+
+function showFilteredData() { 
+    var outputDiv = document.querySelector('#json');
+
+    // Obtain the template rendering function 
+    // from template string 
+    var templateFunction = _.template(templateString); 
+
+    // Render the template with specified parameters 
+    outputDiv.innerHTML = templateFunction({ 
+        "name": "John",
+        "filteredArray": finalFilter
+    }); 
+} 
+
+
 function filterProducts() {
 
     let categoryFilter = categorySelect();
@@ -126,9 +150,7 @@ function filterProducts() {
     //Set finalFilter array
     finalFilter = [...new Set(combinedFilter.map(item => item))];
 
-    // Set DOM to show filtered JSON data
-    divId.innerHTML = JSON.stringify(finalFilter);
-
+    showFilteredData();
 }
 
 //These functions are called inside onclick event in html page buttons
@@ -298,9 +320,8 @@ const sortElement = () => {
     console.log("sort Array", sortArray);
     finalFilter = [...sortArray];
 
-    // Set DOM to show filtered JSON data
-    divId.innerHTML = JSON.stringify(finalFilter);
-
+    showFilteredData();
 }
 
 sortBy.addEventListener('change', sortElement);
+
