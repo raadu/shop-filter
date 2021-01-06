@@ -99,7 +99,7 @@ let divId = document.getElementById("json");
 
 // Execute filter function on every click in input tags
 let inputTags = document.getElementsByTagName("input");
-for(let i=0; i<inputTags.length; i++) {
+for (let i = 0; i < inputTags.length; i++) {
     inputTags[i].addEventListener("click", filterProducts);
 }
 
@@ -117,19 +117,19 @@ var templateString = `<div id="output">
     <% }); %> 
 </ul>`;
 
-function showFilteredData(filteredArray) { 
+function showFilteredData(filteredArray) {
     var outputDiv = document.querySelector('#json');
 
     // Obtain the template rendering function 
     // from template string 
-    var templateFunction = _.template(templateString); 
+    var templateFunction = _.template(templateString);
 
     // Render the template with specified parameters 
-    outputDiv.innerHTML = templateFunction({ 
+    outputDiv.innerHTML = templateFunction({
         "name": "John",
         "filteredArray": filteredArray
-    }); 
-} 
+    });
+}
 
 $(document).ready(function () {
     showFilteredData(dummyData);
@@ -172,7 +172,7 @@ function filterProducts() {
 function categorySelect() {
     if (document.querySelector('input[name="gender"]:checked') !== null) {
         selectedCategory = document.querySelector('input[name="gender"]:checked').value;
-        console.log("selectedCategory", selectedCategory);
+        // console.log("selectedCategory", selectedCategory);
         let filteredCategory = dummyData.filter((data) => {
             return data.category === selectedCategory;
         });
@@ -338,4 +338,26 @@ const sortElement = () => {
 }
 
 sortBy.addEventListener('change', sortElement);
+
+
+// Deselect Filters
+
+const deselect = document.getElementById('deselect');
+
+const deselectFilters = () => {
+    selectedCategory = "";
+    brands = [];
+    prices = [];
+    colors = [];
+    finalFilter = [...dummyData];
+
+    $('input[name=gender]').attr('checked',false);
+    $('input[name=brand]').attr('checked',false);
+    $('input[name=price]').attr('checked',false);
+    $('input[name=color]').attr('checked',false);
+
+    showFilteredData(finalFilter);
+}
+
+deselect.addEventListener('click', deselectFilters);
 
